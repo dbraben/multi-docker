@@ -15,7 +15,7 @@ after_success:
   - docker build -t dbraben/multi-server ./server
   - docker build -t dbraben/multi-worker ./worker
 
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
   - docker push dbraben/multi-client
   - docker push dbraben/multi-nginx
