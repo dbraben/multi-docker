@@ -1,0 +1,36 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "name": "client",
+            "image": "dbraben/multi-client",
+            "host": "client",
+            "essential": false
+        },
+        {
+            "name": "server",
+            "image": "dbraben/multi-server",
+            "host": "express",
+            "essential": false
+        },
+        {
+            "name": "worker",
+            "image": "dbraben/multi-worker",
+            "host": "worker",
+            "essential": false
+        },
+        {
+            "name": "nginx",
+            "image": "dbraben/multi-nginx",
+            "host": "nginx",
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ],
+            "links": ["client", "server"]
+        }
+    ]
+}
